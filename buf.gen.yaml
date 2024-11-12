@@ -1,0 +1,6 @@
+version: v1
+plugins:
+  - plugin: buf.build/protocolbuffers/cpp:v28.3
+    out: protos
+  - plugin: buf.build/grpc/cpp:v1.66.0
+    out: protos

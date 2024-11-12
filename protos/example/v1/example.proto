@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package example.v1;
+
+message ServerPing {
+  uint64  ping_generation = 1;
+}
+
+message ServerPong {
+  ServerPing ping = 1;
+  uint64 pings_so_far = 2;
+}
+
+message ServerPingRequest {
+  ServerPing ping = 1;
+}
+
+message ServerPingResponse {
+  ServerPong pong = 2;
+}
+
+message VersionGetRequest {
+
+}
+
+message VersionGetResponse {
+  string version = 1;
+  string commit_hash = 2;
+}
+
+
+service ExampleService {
+  rpc VersionGet (VersionGetRequest) returns (VersionGetResponse) {}
+  rpc ServerPing (ServerPingRequest) returns (ServerPingResponse) {}
+}
